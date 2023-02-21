@@ -1,0 +1,72 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Shopping Cart</h4>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>
+                                      Category
+                                  </th>
+                                  <th>
+                                      Name
+                                  </th>
+                                  <th>
+                                      Quantity
+                                  </th>
+                                  <th>
+                                      Price
+                                  </th>
+                                  <th>
+                                      Total price
+                                  </th>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let item of carts">
+                                      <td>
+                                          {{item.category}}
+                                      </td>
+                                      <td>
+                                          {{item.productName}}
+                                      </td>
+                                      <td>
+                                          <button (click)="onReduceItem(item)" class="btn btn-info">-</button>&nbsp;&nbsp;<b>{{item.count}}</b>&nbsp;&nbsp;<button (click)="onAddItem(item)" class="btn btn-info">+</button>
+                                      </td>
+                                      <td>
+                                          {{item.priceUnit}}{{item.finalPrice}}
+                                      </td>
+                                      <td class="text-primary">
+                                          {{item.priceUnit}}{{calculateItemTotalPrice(item) | number : '1.2-2'}}
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                      </td>
+                                      <td>
+                                          Promotion Code:
+                                      </td>
+                                      <td>
+                                          <input matInput placeholder="Promotion code" type="text" [(ngModel)]="promotionCode">
+                                          <button (click)="onApplyPromotion()" class="btn btn-info">Apply</button>
+                                      </td>
+                                      <td>
+                                          <b>TOTAL</b>
+                                      </td>
+                                      <td class="text-primary">
+                                          <b>£{{totalAmount | number : '1.2-2'}}</b><br/>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

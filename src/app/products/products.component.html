@@ -1,0 +1,22 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-4" *ngFor="let item of food">
+              <div class="card card-chart">
+                  <div class="card-body">
+                      <h4 class="card-title">{{item.productName}}</h4>
+                      <p class="card-category">
+                          <span class="text-success">{{item.category}}</span></p>
+                      <p>{{item.priceUnit}}{{item.finalPrice}}</p>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons"></i>{{item.quantityAvailable}} {{item.quantityAvailable <= 1 ? 'item' : 'items'}} available
+                      </div>
+                      <button [ngClass]="{'btn-info': item.quantityAvailable != 0}" class="btn pull-right" (click)="onAddToCard(item)">Add to Cart</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
